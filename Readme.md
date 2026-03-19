@@ -3,43 +3,53 @@
 # Description
 ### detailed explanation and justification of the algorithms selected for this project
 
-+-------------------------+
-|        t_frame          |
-+-------------------------+
-| Stacks                  |
-|  ├─ a : s_stack*        | <-- Stack A
-|  └─ b : s_stack*        | <-- Stack B
-+-------------------------+
-| Input / Command         |
-|  ├─ argv : char**       | <-- Program arguments
-|  ├─ line : char*        | <-- Current line/command
-|  └─ str : char*         | <-- Temporary string
-+-------------------------+
-| Flags / Output Control  |
-|  ├─ print_stacks : int  | <-- Show stacks visually
-|  └─ do_write : int      | <-- Write output / logging
-+-------------------------+
-| Stack Metrics           |
-|  ├─ stack_len : int     | <-- Length of stack A
-|  ├─ quarter : long      | <-- 25% value
-|  ├─ median : long       | <-- 50% value
-|  └─ three_quarters : long | <-- 75% value
-+-------------------------+
-| Biggest Element Tracking|
-|  ├─ biggest : long      | <-- Largest value
-|  ├─ big_rotate : int    | <-- Rotations needed to bring it to top
-|  ├─ big_rrotate : int   | <-- Reverse rotations needed
-|  └─ big_flag : int      | <-- Processed / marked
-+-------------------------+
-| Smallest Element Tracking|
-|  ├─ smallest : long     | <-- Smallest value
-|  ├─ small_rotate : int  | <-- Rotations to top
-|  ├─ small_rrotate : int | <-- Reverse rotations
-|  └─ small_flag : int    | <-- Processed / marked
-+-------------------------+
-| Other / Algorithm Flags |
-|  └─ after_rotate : int  | <-- Flag for rotation logic
-+-------------------------+
+## t_frame Structure
+
+### Stacks
+- `a : s_stack*` → Stack A  
+- `b : s_stack*` → Stack B  
+
+---
+
+### Input / Command
+- `argv : char**` → Program arguments  
+- `line : char*` → Current line / command  
+- `str : char*` → Temporary string  
+
+---
+
+### Flags / Output Control
+- `print_stacks : int` → Show stacks visually  
+- `do_write : int` → Write output / logging  
+
+---
+
+### Stack Metrics
+- `stack_len : int` → Length of stack A  
+- `quarter : long` → 25% value  
+- `median : long` → 50% value  
+- `three_quarters : long` → 75% value  
+
+---
+
+### Biggest Element Tracking
+- `biggest : long` → Largest value  
+- `big_rotate : int` → Rotations needed to bring it to top  
+- `big_rrotate : int` → Reverse rotations needed  
+- `big_flag : int` → Processed / marked  
+
+---
+
+### Smallest Element Tracking
+- `smallest : long` → Smallest value  
+- `small_rotate : int` → Rotations to top  
+- `small_rrotate : int` → Reverse rotations  
+- `small_flag : int` → Processed / marked  
+
+---
+
+### Other / Algorithm Flags
+- `after_rotate : int` → Flag for rotation logic  
 
 # Instructions
 

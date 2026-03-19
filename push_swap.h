@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/19 11:18:10 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/19 13:41:08 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-
-# define QUARTER frame->quarter
-# define MEDIAN frame->median
-# define THREE_Q frame->three_quarters
-# define BIGGEST frame->biggest
-# define BIG_ROTATE frame->big_rotate
-# define BIG_RROTATE frame->big_rrotate
-# define BIG_FLAG frame->big_flag
-# define SMALLEST frame->smallest
-# define SMALL_ROTATE frame->small_rotate
-# define SMALL_RROTATE frame->small_rrotate
-# define SMALL_FLAG frame->small_flag
 
 // circular doubly-linked list
 
