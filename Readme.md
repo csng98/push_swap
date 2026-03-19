@@ -59,3 +59,7 @@
 - [Inspiration](https://github.com/anyaschukin/Push_Swap)
 - [Overview](https://github.com/AdrianWR/push_swap)
 - [Jump/branch table](https://en.wikipedia.org/wiki/Branch_table)
+- [Structures CS50 video](https://www.youtube.com/watch?v=E4lb2gkyXr8)
+- [Structs CS50 video](https://www.youtube.com/watch?v=yMvRqKmbRm4)
+- [Defining custom types CS50 video](https://www.youtube.com/watch?v=96M4q0OnMfY)
+- [Struct Wikipedia](https://en.wikipedia.org/wiki/Struct_(C_programming_language)#:~:text=In%20the%20C%20programming%20language,single%20identifier%2C%20often%20a%20pointer.)
