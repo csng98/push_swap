@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:09:46 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 12:32:05 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/20 13:20:43 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	sort_four_or_five(t_stack *s)
 	int	n;
 
 	n = s->size_a;
+	if (is_sorted(s))
+		return ;
 	if (n == 4)
 	{
 		push_smallest_to_b(s);
