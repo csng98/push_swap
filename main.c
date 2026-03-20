@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 08:43:22 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 10:21:38 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:33:23 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int	main(int argc, char **argv)
 		error_exit(&a, &b, NULL);
 	if (a->size_a <= 3)
 		sort_small(a);
+	else if (a->size_a <= 5)
+		sort_four_or_five(a);
 	return (0);
 }

@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_helpers.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/20 12:19:45 by csekakul          #+#    #+#             */
+/*   Updated: 2026/03/20 12:30:02 by csekakul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	find_smallest_index(t_stack *s)
+{
+	int	min_index;
+	int	i;
+
+	min_index = 0;
+	if (!s || s->size_a == 0)
+		return (-1);
+	i = 1;
+	while (i < s->size_a)
+	{
+		if (s->a[i] < s->a[min_index])
+			min_index = i;
+		i++;
+	}
+	return (min_index);
+}
+
+void	push_smallest_to_b(t_stack *s)
+{
+	int	index;
+
+	index = find_smallest_index(s);
+	if (index == -1)
+		return ;
+	if (index <= s->size_a / 2)
+	{
+		while (index-- > 0)
+			ra(s);
+	}
+	else
+	{
+		index = s->size_a - index;
+		while (index-- > 0)
+			rra(s);
+	}
+	pb(s);
+}

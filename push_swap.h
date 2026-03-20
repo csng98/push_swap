@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 10:29:06 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:35:48 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ int			is_sorted(t_stack *s);
 void		sort_two(t_stack *s);
 void		sort_three(t_stack *s);
 void		sort_small(t_stack *s);
+void		sort_four_or_five(t_stack *s);
+void		push_smallest_to_b(t_stack *s);
 
 #endif
