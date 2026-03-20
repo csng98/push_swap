@@ -17,8 +17,6 @@ At this stage, the program supports:
   - Push operations: `pa`, `pb`
   - Rotate operations: `ra`, `rb`, `rr`
   - Reverse rotate operations: `rra`, `rrb`, `rrr`
-  - All operations are fully **42-compliant** (only `malloc`, `free`, `write`, `exit` are used)
-  - Internal helper functions are `static` for encapsulation
 
 - **Sorting**
   - **2–3 numbers:** `sort_three` function sorts stack A optimally
