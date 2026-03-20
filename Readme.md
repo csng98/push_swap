@@ -6,35 +6,49 @@ The program takes a list of integers as arguments and outputs a sequence of oper
 
 At this stage, the program supports:
 
-- Parsing input arguments (including multiple numbers per string)
-- Error handling for invalid input or duplicates
-- Stack operations:
-  - Swap: `sa`, `sb`, `ss`
-  - Push: `pa`, `pb`
-  - Rotate: `ra`, `rb`, `rr`
-  - Reverse rotate: `rra`, `rrb`, `rrr`
-- Sorting small stacks (2 or 3 numbers)  
+- **Parsing and Validation**
+  - Accepts integers from command line arguments
+  - Handles multiple numbers per argument
+  - Validates input: only integers, no duplicates
+  - Converts strings to integers and stores them in **stack A**
+
+- **Stack Operations**
+  - Swap operations: `sa`, `sb`, `ss`
+  - Push operations: `pa`, `pb`
+  - Rotate operations: `ra`, `rb`, `rr`
+  - Reverse rotate operations: `rra`, `rrb`, `rrr`
+  - All operations are fully **42-compliant** (only `malloc`, `free`, `write`, `exit` are used)
+  - Internal helper functions are `static` for encapsulation
+
+- **Sorting**
+  - **2–3 numbers:** `sort_three` function sorts stack A optimally
+  - **4–5 numbers:** `sort_four_or_five` function:
+    - Moves the smallest numbers to stack B
+    - Sorts remaining 3 numbers in A
+    - Pushes numbers back from B to A
+  - Uses a **minimal number of operations** and reuses existing stack functions 
 
 ---
 
 ## Algorithm Selection and Justification
 
-### 1. Sorting 2 numbers
-- **Algorithm:** Compare the first two numbers in stack A and swap if necessary (`sa`).
-- **Justification:**  
-  Sorting two numbers requires at most one operation. Using `sa` is the simplest and most efficient method. There’s no need for push or rotate operations.
+### Small Stack Sorting (2–5 numbers)
 
----
+1. **2–3 numbers:**  
+   - Simple comparison logic using `sa`, `ra`, `rra` to sort 2 or 3 numbers
 
-### 2. Sorting 3 numbers
-- **Algorithm:**  
-  For three numbers, the program checks all 6 possible permutations of the stack and applies the minimal sequence of operations (`sa`, `ra`, `rra`) to sort it.
+2. **4–5 numbers:**  
+   - Find the smallest (or two smallest) numbers in stack A
+   - Rotate stack A to bring the smallest to the top
+   - Push smallest number(s) to stack B (`pb`)
+   - Sort the remaining 3 numbers in stack A
+   - Push numbers back from stack B to stack A (`pa`)
+   - Rotations are chosen to minimize the number of moves
 
-- **Justification:**  
-  - The number of possible permutations for 3 numbers is small (6).  
-  - By analyzing each case, we can guarantee that **no more than 2 operations** are needed to sort any 3-number stack.  
-  - This method is both **efficient** and **deterministic**, producing the shortest sequence of allowed operations for any 3-number input.  
-  - Using swap and rotate operations only avoids unnecessary use of stack B, which is reserved for larger stacks.  
+**Justification:**  
+- This approach is **deterministic and optimal for very small stacks**, ensuring minimal operations
+- It is **scalable**, as the same push/pop strategy can be extended for larger sorting algorithms later (radix sort, etc.)
+- Keeps code **modular and reusable**, separating operations from parsing and sorting logic 
 
 **Examples:**
 
@@ -52,9 +66,6 @@ At this stage, the program supports:
 ### 3. Use of Two Stacks (A and B)
 - Even though sorting ≤3 numbers does not require stack B, the project architecture uses two stacks in preparation for **sorting larger inputs**.  
 - All operations (push, swap, rotate, reverse rotate) are implemented for both stacks to allow scalability.
-
-### TODO
-- stack_and_back reallocates every time -> optimization later
 
 ---
 
