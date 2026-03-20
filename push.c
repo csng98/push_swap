@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:00:19 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 10:00:52 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:07:59 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 static void	push_a_internal(t_stack *s)
 {
+	int	*new_array;
 	int	i;
 
 	if (!s || s->size_b == 0)
 		return ;
-	s->a = realloc(s->a, sizeof(int) * (s->size_a + 1));
-	i = s->size_a;
-	while (i > 0)
+	new_array = malloc(sizeof(int) * (s->size_a + 1));
+	if (!new_array)
+		error_exit(&s, NULL, NULL);
+	i = 0;
+	while (i < s->size_a)
 	{
-		s->a[i] = s->a[i - 1];
-		i--;
+		new_array[i + 1] = s->a[i];
+		i++;
 	}
-	s->a[0] = s->b[0];
+	new_array[0] = s->b[0];
+	free(s->a);
+	s->a = new_array;
 	s->size_a++;
 	i = 0;
 	while (i < s->size_b - 1)
@@ -38,18 +43,23 @@ static void	push_a_internal(t_stack *s)
 
 static void	push_b_internal(t_stack *s)
 {
+	int	*new_array;
 	int	i;
 
 	if (!s || s->size_a == 0)
 		return ;
-	s->b = realloc(s->b, sizeof(int) * (s->size_b + 1));
-	i = s->size_b;
-	while (i > 0)
+	new_array = malloc(sizeof(int) * (s->size_b + 1));
+	if (!new_array)
+		error_exit(&s, NULL, NULL);
+	i = 0;
+	while (i < s->size_b)
 	{
-		s->b[i] = s->b[i - 1];
-		i--;
+		new_array[i + 1] = s->b[i];
+		i++;
 	}
-	s->b[0] = s->a[0];
+	new_array[0] = s->a[0];
+	free(s->b);
+	s->b = new_array;
 	s->size_b++;
 	i = 0;
 	while (i < s->size_a - 1)
