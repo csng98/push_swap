@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 12:19:45 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 12:30:02 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/21 15:34:36 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,29 @@ void	push_smallest_to_b(t_stack *s)
 			rra(s);
 	}
 	pb(s);
+}
+
+double	compute_disorder(t_stack *s)
+{
+	int	i;
+	int	j;
+	int	mistakes;
+	int	total_pairs;
+
+	i = 0;
+	mistakes = 0;
+	total_pairs = 0;
+	while (i < s->size_a)
+	{
+		j = i + 1;
+		while (j < s->size_a)
+		{
+			total_pairs++;
+			if (s->a[i] > s->a[j])
+				mistakes++;
+			j++;
+		}
+		i++;
+	}
+	return ((double)mistakes / total_pairs);
 }

@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 12:35:48 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/21 15:49:49 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_stack
 	int		size_b;
 	int		total;
 }	t_stack;
+
+typedef enum e_strategy
+{
+	SIMPLE,
+	MEDIUM,
+	COMPLEX,
+	ADAPTIVE
+}	t_strategy;
 
 size_t		ft_strlen(const char *s);
 char		**ft_split(char const *s, char c);
