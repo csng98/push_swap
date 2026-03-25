@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:01:52 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 10:02:05 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:29:17 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ void	ra(t_stack *s)
 {
 	rotate_a_internal(s);
 	write(1, "ra\n", 3);
+	s->op_count++;
+	s->ra_count++;
 }
 
 void	rb(t_stack *s)
 {
 	rotate_b_internal(s);
 	write(1, "rb\n", 3);
+	s->op_count++;
+	s->rb_count++;
 }
 
 void	rr(t_stack *s)
@@ -63,4 +67,6 @@ void	rr(t_stack *s)
 	rotate_a_internal(s);
 	rotate_b_internal(s);
 	write(1, "rr\n", 3);
+	s->op_count++;
+	s->rr_count++;
 }

@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 09:00:29 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 09:12:43 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:44:25 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,24 @@ t_strategy	parse_strategy(int argc, char **argv, int *start)
 void	sort_stack(t_stack *a, t_stack *b, t_strategy strategy)
 {
 	(void)b;
-	(void)strategy;
-
+	if (!a || is_sorted(a))
+		return ;
 	if (a->size_a <= 3)
+	{
 		sort_small(a);
+		return ;
+	}
 	else if (a->size_a <= 5)
+	{
 		sort_four_or_five(a);
+		return ;
+	}
+	if (strategy == SIMPLE)
+		simple_sort(a);
+	else if (strategy == MEDIUM)
+		chunk_sort(a);
+	else if (strategy == COMPLEX)
+		radix_sort(a);
+	else if (strategy == ADAPTIVE)
+		adaptive_sort(a);
 }

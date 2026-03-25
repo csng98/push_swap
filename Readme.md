@@ -18,13 +18,114 @@ At this stage, the program supports:
   - Rotate operations: `ra`, `rb`, `rr`
   - Reverse rotate operations: `rra`, `rrb`, `rrr`
 
-- **Sorting**
-  - **2–3 numbers:** `sort_three` function sorts stack A optimally
-  - **4–5 numbers:** `sort_four_or_five` function:
-    - Moves the smallest numbers to stack B
-    - Sorts remaining 3 numbers in A
-    - Pushes numbers back from B to A
-  - Uses a **minimal number of operations** and reuses existing stack functions 
+## 1. Simple Algorithm — O(n²)
+
+Implemented in: `simple_sort`
+
+### Approach:
+- Repeatedly push the smallest element from stack A to B
+- Sort the remaining small subset (≤5 elements)
+- Push elements back to A
+
+### Characteristics:
+- Deterministic and easy to implement
+- Efficient for small inputs
+- Not suitable for large datasets
+
+---
+
+## 2. Medium Algorithm — O(n√n)
+
+Implemented in: `chunk_sort`
+
+### Approach:
+- Divide the indexed values into **chunks**
+- Push elements from A to B based on chunk ranges
+- Use rotations (`rb`) to position smaller elements deeper in B
+- Reconstruct A by pushing back the largest elements first
+
+### Key Idea:
+- Reduces unnecessary movements by grouping values
+
+### Tuning:
+- Chunk size is proportional to input size (e.g., `n / 5`)
+- Proper tuning significantly improves performance
+
+### Performance:
+- Designed to achieve **<700 operations for 100 numbers** (excellent target)
+
+---
+
+## 3. Complex Algorithm — O(n log n)
+
+Implemented in: `radix_sort`
+
+### Approach:
+- Uses **binary radix sort**
+- First normalizes values using indexing
+- Sorts numbers bit by bit using `pb` and `ra`
+- Rebuilds stack A after each bit pass
+
+### Characteristics:
+- Very stable and predictable
+- Guarantees good performance for large inputs
+- Not optimal for small or partially sorted datasets
+
+---
+
+## 4. Adaptive Algorithm — Hybrid Strategy
+
+Implemented in: `adaptive_sort`
+
+### Disorder Metric
+
+Before sorting, the program computes a **disorder value (0 → 1)**:
+
+- `0`: already sorted
+- `1`: completely reversed
+- Based on pairwise inversions
+
+---
+
+### Strategy Selection
+
+| Disorder Range | Strategy Used | Complexity |
+|---------------|--------------|-----------|
+| `< 0.2`       | Simple / near-sorted handling | ~O(n) |
+| `< 0.5`       | Chunk sort | O(n√n) |
+| `≥ 0.5`       | Radix sort | O(n log n) |
+
+### Rationale:
+- **Low disorder:** minimal fixes required → avoid heavy algorithms
+- **Medium disorder:** chunking balances efficiency and control
+- **High disorder:** radix guarantees consistent performance
+
+---
+
+# Small Stack Optimization (Critical)
+
+Before applying any strategy, the program always handles small inputs:
+
+- **2–3 elements:** optimal hardcoded logic (`sort_small`)
+- **4–5 elements:** push smallest values to B, sort remaining, then restore
+
+### Example:
+
+| Input | Output |
+|------|--------|
+| `[3, 2, 1]` | `sa` `rra` |
+
+This guarantees **minimal operations** and avoids unnecessary use of complex algorithms.
+
+---
+
+# Strategy Selection
+
+The program supports runtime selection:
+
+```bash
+./push_swap [strategy] numbers...
+```
 
 ---
 
@@ -65,14 +166,35 @@ At this stage, the program supports:
 - Even though sorting ≤3 numbers does not require stack B, the project architecture uses two stacks in preparation for **sorting larger inputs**.  
 - All operations (push, swap, rotate, reverse rotate) are implemented for both stacks to allow scalability.
 
+### Design Choices
+- Array-based stacks for simplicity and performance
+- Indexing system to normalize values for radix and chunk algorithms
+- Modular structure:
+	- Parsing
+	- Operations
+	- Strategies
+- Adaptive approach to handle different input patterns efficiently
+
 ---
 
 # Instructions
+Compile the program using Makefile:
 
-Compile the program:
+```bash
+make
+```
+Compile the program manually:
 
 ```bash
 cc -Wall -Wextra -Werror *.c -o push_swap
+```
+Run
+```bash
+./push_swap 3 2 1
+```
+Run with specific strategy
+```bash
+./push_swap --medium 5 2 8 1 3
 ```
 
 # Resources

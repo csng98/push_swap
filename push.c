@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:00:19 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 12:07:59 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:28:40 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,14 @@ void	pa(t_stack *s)
 {
 	push_a_internal(s);
 	write(1, "pa\n", 3);
+	s->op_count++;
+	s->pa_count++;
 }
 
 void	pb(t_stack *s)
 {
 	push_b_internal(s);
 	write(1, "pb\n", 3);
+	s->op_count++;
+	s->pb_count++;
 }

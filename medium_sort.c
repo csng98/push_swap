@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 16:06:02 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 08:47:35 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:33:13 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	get_chunk_size(int size)
 {
 	if (size <= 100)
-		return (size / 6);
+		return (size / 5);
 	else
-		return (size / 11);
+		return (size / 8);
 }
 
 void	chunk_sort(t_stack *s)

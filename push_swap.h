@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 09:07:58 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:35:22 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ typedef struct s_stack
 	int		size_a;
 	int		size_b;
 	int		total;
+	int		op_count;
+	int		sa_count;
+	int		sb_count;
+	int		ss_count;
+	int		pa_count;
+	int		pb_count;
+	int		ra_count;
+	int		rb_count;
+	int		rr_count;
+	int		rra_count;
+	int		rrb_count;
+	int		rrr_count;
 }	t_stack;
 
 typedef enum e_strategy
@@ -71,5 +83,6 @@ void		push_back_max(t_stack *s);
 t_strategy	parse_strategy(int argc, char **argv, int *start);
 void		sort_stack(t_stack *a, t_stack *b, t_strategy strategy);
 int			ft_strcmp(char *s1, char *s2);
+void		adaptive_sort(t_stack *s);
 
 #endif

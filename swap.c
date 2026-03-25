@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 09:53:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 09:56:05 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:28:14 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,16 @@ void	sa(t_stack *s)
 {
 	swap_a_internal(s);
 	write(1, "sa\n", 3);
+	s->op_count++;
+	s->sa_count++;
 }
 
 void	sb(t_stack *s)
 {
 	swap_b_internal(s);
 	write(1, "sb\n", 3);
+	s->op_count++;
+	s->sb_count++;
 }
 
 void	ss(t_stack *s)
@@ -51,4 +55,6 @@ void	ss(t_stack *s)
 	swap_a_internal(s);
 	swap_b_internal(s);
 	write(1, "ss\n", 3);
+	s->op_count++;
+	s->ss_count++;
 }
