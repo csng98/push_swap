@@ -102,7 +102,7 @@ Before sorting, the program computes a **disorder value (0 → 1)**:
 
 ---
 
-# Small Stack Optimization (Critical)
+## Small Stack Optimization (Critical)
 
 Before applying any strategy, the program always handles small inputs:
 
@@ -119,7 +119,7 @@ This guarantees **minimal operations** and avoids unnecessary use of complex alg
 
 ---
 
-# Strategy Selection
+## Strategy Selection
 
 The program supports runtime selection:
 
