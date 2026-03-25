@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 08:45:18 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 07:58:25 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:32:29 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ static t_stack	*init_stack_struct(void)
 	stack->size_a = 0;
 	stack->size_b = 0;
 	stack->total = 0;
+	stack->op_count = 0;
+	stack->sa_count = 0;
+	stack->sb_count = 0;
+	stack->ss_count = 0;
+	stack->pa_count = 0;
+	stack->pb_count = 0;
+	stack->ra_count = 0;
+	stack->rb_count = 0;
+	stack->rr_count = 0;
+	stack->rra_count = 0;
+	stack->rrb_count = 0;
+	stack->rrr_count = 0;
 	return (stack);
 }
 

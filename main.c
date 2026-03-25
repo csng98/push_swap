@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 08:43:22 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 10:10:42 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:58:03 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_stack		*a;
 	t_stack		*b;
-	t_strategy	strategy;
+	t_flags		flags;
+	double		disorder;
 	int			i;
 
 	if (argc < 2)
 		return (0);
 	a = NULL;
 	b = NULL;
-	strategy = parse_strategy(argc, argv, &i);
+	flags = parse_strategy(argc, argv, &i);
 	while (i < argc)
 	{
 		get_numbers(argv[i], &a);
@@ -31,7 +32,10 @@ int	main(int argc, char **argv)
 	}
 	if (!a || is_duplicate(&a))
 		error_exit(&a, &b, NULL);
-	sort_stack(a, b, strategy);
+	disorder = compute_disorder(a);
+	sort_stack(a, b, flags.strategy);
+	if (flags.bench)
+		print_bench(a, disorder, flags.strategy);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

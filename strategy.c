@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 09:00:29 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 10:44:25 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:53:25 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,41 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-static int	is_flag(char *arg)
+/*static int	is_flag(char *arg)
 {
 	return (!ft_strcmp(arg, "--simple")
 		|| !ft_strcmp(arg, "--medium")
 		|| !ft_strcmp(arg, "--complex")
 		|| !ft_strcmp(arg, "--adaptive")
 		|| !ft_strcmp(arg, "--bench"));
-}
+}*/
 
-t_strategy	parse_strategy(int argc, char **argv, int *start)
+t_flags	parse_strategy(int argc, char **argv, int *start)
 {
-	t_strategy	strategy;
+	t_flags		flags;
 	int			i;
 
-	strategy = ADAPTIVE;
+	flags.strategy = ADAPTIVE;
+	flags.bench = 0;
 	i = 1;
-	while (i < argc && is_flag(argv[i]))
+	while (i < argc && argv[i][0] == '-')
 	{
 		if (!ft_strcmp(argv[i], "--simple"))
-			strategy = SIMPLE;
+			flags.strategy = SIMPLE;
 		else if (!ft_strcmp(argv[i], "--medium"))
-			strategy = MEDIUM;
+			flags.strategy = MEDIUM;
 		else if (!ft_strcmp(argv[i], "--complex"))
-			strategy = COMPLEX;
+			flags.strategy = COMPLEX;
+		else if (!ft_strcmp(argv[i], "--adaptive"))
+			flags.strategy = ADAPTIVE;
+		else if (!ft_strcmp(argv[i], "--bench"))
+			flags.bench = 1;
+		else
+			break ;
 		i++;
 	}
 	*start = i;
-	return (strategy);
+	return (flags);
 }
 
 void	sort_stack(t_stack *a, t_stack *b, t_strategy strategy)
@@ -76,3 +83,5 @@ void	sort_stack(t_stack *a, t_stack *b, t_strategy strategy)
 	else if (strategy == ADAPTIVE)
 		adaptive_sort(a);
 }
+
+

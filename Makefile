@@ -6,7 +6,7 @@
 #    By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/19 08:58:28 by csekakul          #+#    #+#              #
-#    Updated: 2026/03/25 09:04:07 by csekakul         ###   ########.fr        #
+#    Updated: 2026/03/25 13:46:16 by csekakul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRC =	main.c \
 		adaptive_sort.c \
 		simple_sort.c \
 		medium_sort.c \
-		complex_sort.c
+		complex_sort.c \
+		io_helpers.c \
+		bench.c
 
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h

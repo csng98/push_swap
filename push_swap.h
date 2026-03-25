@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 10:35:22 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:47:43 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ typedef enum e_strategy
 	ADAPTIVE
 }	t_strategy;
 
+typedef struct s_flags
+{
+	t_strategy	strategy;
+	int			bench;
+}	t_flags;
+
 size_t		ft_strlen(const char *s);
 char		**ft_split(char const *s, char c);
 long		ft_atoi(const char *str);
@@ -80,9 +86,17 @@ void		simple_sort(t_stack *a);
 void		chunk_sort(t_stack *s);
 void		radix_sort(t_stack *s);
 void		push_back_max(t_stack *s);
-t_strategy	parse_strategy(int argc, char **argv, int *start);
+t_flags		parse_strategy(int argc, char **argv, int *start);
 void		sort_stack(t_stack *a, t_stack *b, t_strategy strategy);
 int			ft_strcmp(char *s1, char *s2);
 void		adaptive_sort(t_stack *s);
+void		print_bench(t_stack *s, double disorder, t_strategy strategy);
+void		putstr_fd(char *s, int fd);
+void		putnbr_fd(int n, int fd);
+void		print_bench(t_stack *s, double disorder, t_strategy strategy);
+void		print_strategy(t_strategy strategy);
+void		print_ops_top(t_stack *s);
+void		print_ops_bottom(t_stack *s);
+void		print_percentage(double d);
 
 #endif
