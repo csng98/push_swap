@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/21 15:56:53 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 09:07:58 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			input_is_correct(char *str);
 void		get_numbers(char *current_arg, t_stack **a);
 void		error_exit(t_stack **a, t_stack **b, char **split);
 int			is_duplicate(t_stack **stack);
-void		stack_add_back(t_stack **stack, int n, char *param);
+void		stack_add_back(t_stack **stack, int n);
 void		free_stack(t_stack **stack);
 void		free_split(char **split);
 void		sa(t_stack *s);
@@ -62,5 +62,14 @@ void		sort_three(t_stack *s);
 void		sort_small(t_stack *s);
 void		sort_four_or_five(t_stack *s);
 void		push_smallest_to_b(t_stack *s);
+double		compute_disorder(t_stack *s);
+void		index_stack(t_stack *s);
+void		simple_sort(t_stack *a);
+void		chunk_sort(t_stack *s);
+void		radix_sort(t_stack *s);
+void		push_back_max(t_stack *s);
+t_strategy	parse_strategy(int argc, char **argv, int *start);
+void		sort_stack(t_stack *a, t_stack *b, t_strategy strategy);
+int			ft_strcmp(char *s1, char *s2);
 
 #endif

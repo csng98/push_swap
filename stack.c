@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 08:45:18 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 10:31:46 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 07:58:25 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_stack	*init_stack_struct(void)
 	return (stack);
 }
 
-void	stack_add_back(t_stack **stack, int n, char *param)
+void	stack_add_back(t_stack **stack, int n)
 {
 	int	*new_array;
 	int	i;
@@ -35,10 +35,10 @@ void	stack_add_back(t_stack **stack, int n, char *param)
 	if (!*stack)
 		*stack = init_stack_struct();
 	if (!*stack)
-		error_exit(NULL, NULL, &param);
+		error_exit(NULL, NULL, NULL);
 	new_array = malloc(sizeof(int) * ((*stack)->size_a + 1));
 	if (!new_array)
-		error_exit(stack, NULL, &param);
+		error_exit(stack, NULL, NULL);
 	i = 0;
 	while (i < (*stack)->size_a)
 	{

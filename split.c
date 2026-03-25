@@ -6,21 +6,11 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 08:44:40 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/20 10:32:48 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 07:53:03 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
 static unsigned int	countwords(const char *s, char c)
 {
@@ -54,31 +44,48 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }
 
-static char	*ft_cpy(size_t i, char const *s, char c, char **split)
+void	free_partial_split(char **split, size_t j)
 {
-	int		index;
+	size_t	i;
+
+	i = 0;
+	while (i < j)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+int	fill_split(char const *s, char c, char **split)
+{
+	size_t	i;
 	size_t	j;
+	int		index;
 
 	index = -1;
+	i = 0;
 	j = 0;
 	while (i <= ft_strlen(s))
 	{
-		if (s[i] != c && index < 0)
+		if (s[i] != c && s[i] && index < 0)
 			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		else if ((s[i] == c || !s[i]) && index >= 0)
 		{
-			split[j++] = word_dup(s, index, i);
+			split[j] = word_dup(s, index, i);
+			if (!split)
+				return (free_partial_split(split, j), 0);
+			j++;
 			index = -1;
 		}
 		i++;
 	}
-	split[j] = 0;
-	return (split[j]);
+	split[j] = NULL;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
 	char	**split;
 
 	if (!s)
@@ -86,7 +93,7 @@ char	**ft_split(char const *s, char c)
 	split = malloc((countwords(s, c) + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
-	i = 0;
-	ft_cpy(i, s, c, split);
+	if (!fill_split(s, c, split))
+		return (NULL);
 	return (split);
 }

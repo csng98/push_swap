@@ -1,48 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium_sort.c                                      :+:      :+:    :+:   */
+/*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/21 16:06:02 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 08:47:35 by csekakul         ###   ########.fr       */
+/*   Created: 2026/03/25 08:17:36 by csekakul          #+#    #+#             */
+/*   Updated: 2026/03/25 08:19:09 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_chunk_size(int size)
+void	adaptive_sort(t_stack *s)
 {
-	if (size <= 100)
-		return (size / 6);
+	double	d;
+
+	d = compute_disorder(s);
+	index_stack(s);
+
+	if (d < 0.2)
+		simple_sort(s);
+	else if (d < 0.5)
+		chunk_sort(s);
 	else
-		return (size / 11);
-}
-
-void	chunk_sort(t_stack *s)
-{
-	int	chunk;
-	int	i;
-
-	chunk = get_chunk_size(s->size_a);
-	i = 0;
-	while (s->size_a > 0)
-	{
-		if (s->a[0] <= i)
-		{
-			pb(s);
-			rb(s);
-			i++;
-		}
-		else if (s->a[0] <= i + chunk)
-		{
-			pb(s);
-			i++;
-		}
-		else
-			ra(s);
-	}
-	while (s->size_b > 0)
-		push_back_max(s);
+		radix_sort(s);
 }

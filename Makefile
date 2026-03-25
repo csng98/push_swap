@@ -6,11 +6,14 @@
 #    By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/19 08:58:28 by csekakul          #+#    #+#              #
-#    Updated: 2026/03/20 12:47:00 by csekakul         ###   ########.fr        #
+#    Updated: 2026/03/25 09:04:07 by csekakul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 SRC =	main.c \
 		parsing.c \
@@ -22,19 +25,32 @@ SRC =	main.c \
 		sort_small.c \
 		utils.c \
 		sort_helpers.c \
+		split.c \
+		indexing.c \
+		strategy.c \
+		adaptive_sort.c \
+		simple_sort.c \
+		medium_sort.c \
+		complex_sort.c
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+OBJ = $(SRC:.c=.o)
+HEADER = push_swap.h
+RM = rm -f
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "Nothing to clean yet."
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

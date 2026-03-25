@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 12:19:45 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/21 15:34:36 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/03/25 08:48:58 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,41 @@ void	push_smallest_to_b(t_stack *s)
 			rra(s);
 	}
 	pb(s);
+}
+
+int	find_max_index(t_stack *s)
+{
+	int	i;
+	int	max_i;
+
+	i = 0;
+	max_i = 0;
+	while (i < s->size_b)
+	{
+		if (s->b[i] > s->b[max_i])
+			max_i = i;
+		i++;
+	}
+	return (max_i);
+}
+
+void	push_back_max(t_stack *s)
+{
+	int	index;
+
+	index = find_max_index(s);
+	if (index <= s->size_b / 2)
+	{
+		while (index-- > 0)
+			rb(s);
+	}
+	else
+	{
+		index = s->size_b - index;
+		while (index-- > 0)
+			rrb(s);
+	}
+	pa(s);
 }
 
 double	compute_disorder(t_stack *s)
