@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 08:58:24 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 13:47:43 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/04/01 10:27:06 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef enum e_strategy
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-	ADAPTIVE
+	ADAPTIVE,
 }	t_strategy;
 
 typedef struct s_flags
@@ -84,6 +84,7 @@ double		compute_disorder(t_stack *s);
 void		index_stack(t_stack *s);
 void		simple_sort(t_stack *a);
 void		chunk_sort(t_stack *s);
+void		k_sort(t_stack *s);
 void		radix_sort(t_stack *s);
 void		push_back_max(t_stack *s);
 t_flags		parse_strategy(int argc, char **argv, int *start);
@@ -94,7 +95,7 @@ void		print_bench(t_stack *s, double disorder, t_strategy strategy);
 void		putstr_fd(char *s, int fd);
 void		putnbr_fd(int n, int fd);
 void		print_bench(t_stack *s, double disorder, t_strategy strategy);
-void		print_strategy(t_strategy strategy);
+void		print_strategy(t_strategy strategy, double disorder);
 void		print_ops_top(t_stack *s);
 void		print_ops_bottom(t_stack *s);
 void		print_percentage(double d);

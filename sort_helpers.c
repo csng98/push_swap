@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 12:19:45 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 08:48:58 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:45:25 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,7 @@ double	compute_disorder(t_stack *s)
 		}
 		i++;
 	}
+	if (total_pairs == 0)
+		return (0);
 	return ((double)mistakes / total_pairs);
 }

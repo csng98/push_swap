@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 09:00:29 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 13:53:25 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/04/01 10:34:58 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,6 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
-
-/*static int	is_flag(char *arg)
-{
-	return (!ft_strcmp(arg, "--simple")
-		|| !ft_strcmp(arg, "--medium")
-		|| !ft_strcmp(arg, "--complex")
-		|| !ft_strcmp(arg, "--adaptive")
-		|| !ft_strcmp(arg, "--bench"));
-}*/
 
 t_flags	parse_strategy(int argc, char **argv, int *start)
 {
@@ -65,23 +56,21 @@ void	sort_stack(t_stack *a, t_stack *b, t_strategy strategy)
 	if (!a || is_sorted(a))
 		return ;
 	if (a->size_a <= 3)
-	{
-		sort_small(a);
-		return ;
-	}
+		return (sort_small(a));
 	else if (a->size_a <= 5)
-	{
-		sort_four_or_five(a);
-		return ;
-	}
+		return (sort_four_or_five(a));
 	if (strategy == SIMPLE)
 		simple_sort(a);
 	else if (strategy == MEDIUM)
+	{
+		index_stack(a);
 		chunk_sort(a);
+	}
 	else if (strategy == COMPLEX)
+	{
+		index_stack(a);
 		radix_sort(a);
+	}
 	else if (strategy == ADAPTIVE)
 		adaptive_sort(a);
 }
-
-

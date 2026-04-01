@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 08:11:28 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 08:11:43 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:31:02 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	index_stack(t_stack *s)
 
 	sorted = copy_array(s->a, s->size_a);
 	sort_int_array(sorted, s->size_a);
-
 	i = 0;
 	while (i < s->size_a)
 	{

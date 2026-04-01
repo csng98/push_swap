@@ -175,6 +175,65 @@ The program supports runtime selection:
 	- Strategies
 - Adaptive approach to handle different input patterns efficiently
 
+## rafsanch Contributions
+
+- **Designed** the initial project structure
+- **Implemented:**
+  - Argument parsing and validation
+  - Stack structure using arrays
+  - Core stack operations (`sa`, `pb`, `ra`, etc.)
+  - Simple sorting algorithm (**O(n²)**)
+- **Developed:**
+  - Memory handling and error management
+  - Improvements in `ft_split` (fixing edge cases and leaks)
+- **Added:**
+  - K sort algorithm for low-disorder optimization
+  - Safer operation execution (avoiding invalid instruction outputs)
+- **Performed:**
+  - Final integration
+  - Debugging (memory leaks, edge cases)
+  - Norminette compliance and testing
+
+---
+
+## csekakul Contributions
+
+- **Researched and implemented advanced sorting strategies:**
+  - Radix sort (complex strategy)
+  - Chunk sort (medium strategy)
+  - Adaptive sorting system
+- **Developed:**
+  - Indexing system (`indexing.c`) for normalization
+  - Disorder computation logic
+  - Strategy selection system (`strategy.c`)
+- **Implemented:**
+  - Benchmarking system (`bench.c`)
+  - Supporting I/O utilities (`io_helpers.c`)
+- **Contributed to:**
+  - Small number sorting logic (≤5 elements)
+  - Project documentation and README resources
+
+---
+
+## Shared Contributions
+
+- Algorithm design discussions and decisions
+- Strategy selection (arrays vs linked lists)
+- Testing and validation of sorting behavior
+- Performance evaluation and optimization decisions
+- Final project review and preparation for evaluation
+
+---
+
+## Collaboration Highlights
+
+- Clear communication and regular updates via chat
+- Efficient division of responsibilities
+- Strong combination of:
+  - algorithmic design
+  - systems implementation
+- Flexible planning aligned with project deadlines
+
 ---
 
 # Instructions

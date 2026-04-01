@@ -6,7 +6,7 @@
 /*   By: csekakul <csekakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 13:34:09 by csekakul          #+#    #+#             */
-/*   Updated: 2026/03/25 13:43:43 by csekakul         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:27:55 by csekakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	print_ops_top(t_stack *s)
 	putstr_fd(" ss: ", 2);
 	putnbr_fd(s->ss_count, 2);
 	write(2, "\n", 1);
-
 	putstr_fd("pa: ", 2);
 	putnbr_fd(s->pa_count, 2);
 	putstr_fd(" pb: ", 2);
@@ -38,7 +37,6 @@ void	print_ops_bottom(t_stack *s)
 	putstr_fd(" rr: ", 2);
 	putnbr_fd(s->rr_count, 2);
 	write(2, "\n", 1);
-
 	putstr_fd("rra: ", 2);
 	putnbr_fd(s->rra_count, 2);
 	putstr_fd(" rrb: ", 2);
@@ -61,7 +59,7 @@ void	print_percentage(double d)
 	write(2, "%\n", 2);
 }
 
-void	print_strategy(t_strategy strategy)
+void	print_strategy(t_strategy strategy, double disorder)
 {
 	putstr_fd("Strategy: ", 2);
 	if (strategy == SIMPLE)
@@ -71,14 +69,21 @@ void	print_strategy(t_strategy strategy)
 	else if (strategy == COMPLEX)
 		putstr_fd("COMPLEX (O(n log n))\n", 2);
 	else
-		putstr_fd("ADAPTIVE\n", 2);
+	{
+		if (disorder < 0.2)
+			putstr_fd("ADAPTIVE / O(n)\n", 2);
+		else if (disorder < 0.5)
+			putstr_fd("ADAPTIVE / O(n√n)\n", 2);
+		else
+			putstr_fd("ADAPTIVE / O(n log n)\n", 2);
+	}
 }
 
 void	print_bench(t_stack *s, double disorder, t_strategy strategy)
 {
 	putstr_fd("Disorder: ", 2);
 	print_percentage(disorder);
-	print_strategy(strategy);
+	print_strategy(strategy, disorder);
 	putstr_fd("Total operations: ", 2);
 	putnbr_fd(s->op_count, 2);
 	write(2, "\n", 1);
