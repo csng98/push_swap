@@ -1,5 +1,39 @@
 *This project has been created as part of the 42 curriculum by csekakul and rafsanch.*
 
+# Push_swap: Complexity Analysis Under Stack Constraints 📊
+
+Welcome to **push_swap**, a C programming project focused on sorting data on a constrained stack architecture using the lowest possible number of operations.
+
+## 🚀 Project Overview
+The objective is to calculate and output the most optimized sequence of stack manipulation operations to sort a random stack of unique integers. The program computes a real-time disorder metric from the raw input and dynamically shifts sorting routes across four distinct algorithmic regimes to preserve performance.
+
+## 📂 Project Structure
+
+| File Mapping Component | Architectural Assignment Profile |
+| :--- | :--- |
+| 📄 `Makefile` | Multi-rule compilation automation script (`all`, `clean`, `fclean`, `re`, `bonus`). |
+| 📄 `push_swap.h` | Global definitions layout, configuration structures, and standard system includes. |
+| 📄 `main.c` | Program entry pipeline managing CLI string configuration routing. |
+| 📄 `strategy.c` | Strategy evaluation matrix choosing matching algorithmic regimes at runtime. |
+| 📄 `indexing.c` | Coordinate item normalization system mapping variable arrays to relative indices. |
+| 📄 `bench.c` | Instruction metric logger processing profiling analytics maps over `stderr`. |
+| 📄 `parsing.c` | System input sanitation, type compliance checking, and overflow guards. |
+| 📄 `split.c` | Substring boundary tokenizer isolating multi-element execution arrays. |
+| 📄 `stack.c` | Stack array buffer instantiations and tracking boundary conditions. |
+| 📄 `io_helpers.c` | Low-level streaming pipelines routing structural string feedback characters. |
+| 📄 `push.c` | Emulated push instructions execution engine (`pa`, `pb`). |
+| 📄 `swap.c` | Emulated internal array element flipping subroutines (`sa`, `sb`, `ss`). |
+| 📄 `rotate.c` | Shift-up circular index tracking operations block (`ra`, `rb`, `rr`). |
+| 📄 `reverse_rotate.c` | Shift-down circular index tracking operations block (`rra`, `rrb`, `rrr`). |
+| 📄 `sort_small.c` | Hardcoded structural optimization paths resolving constraints for $\le 3$ elements. |
+| 📄 `sort_helpers.c` | Relative threshold utilities tracking minimum targets for groups under 5 elements. |
+| 📄 `simple_sort.c` | Baseline selection insertion strategy handling the $O(n^2)$ baseline regime. |
+| 📄 `medium_sort.c` | Block partitioning range-based handler driving the $O(n\sqrt{n})$ regime. |
+| 📄 `complex_sort.c` | Bitwise Radix LSB transformation handler executing the $O(n \log n)$ regime. |
+| 📄 `k_sort.c` | High-efficiency range chunking module optimized for low-disorder tracking. |
+| 📄 `adaptive_sort.c` | Mathematical pairwise inversion metric loop mapping input chaos directly. |
+| 📄 `utils.c` | Isolated utility algorithms and secondary standard performance functions. |
+
 # Description
 
 The program takes a list of integers as arguments and outputs a sequence of operations that sorts the numbers in ascending order using two stacks (A and B) and a limited set of operations.
